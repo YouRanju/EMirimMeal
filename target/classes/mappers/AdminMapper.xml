@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+	<select id="adminList" resultType="kr.hs.emirimmeal.model.vo.AdminVO">
+		select * from admintbl
+	</select>
+	
+	<select id="loginCheck" resultType="String">
+		select adminname from admintbl where adminid=#{adminid} and adminpw=#{adminpw}
+	</select>
+	
+	<select id="viewAdmin" resultType="kr.hs.emirimmeal.model.vo.AdminVO">
+		select * from admintbl where adminid=#{adminid} and adminpw=#{adminpw}
+	</select>
+</mapper>

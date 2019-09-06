@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="student">
+	<select id="studentList" resultType="kr.hs.emirimmeal.model.vo.StudentVO">
+		select * from studenttbl
+	</select>
+	
+	<select id="loginCheck" resultType="String">
+		select name from studenttbl where no=#{no} and name=#{name} and passcode=#{passcode}
+	</select>
+	
+	<select id="viewStudent" resultType="kr.hs.emirimmeal.model.vo.StudentVO">
+		select * from studenttbl
+		where no=#{no} and name=#{name} and passcode=#{passcode}
+	</select>
+</mapper>
