@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mealset">
+	<select id="setlist" resultType="kr.hs.emirimmeal.model.vo.MealSettingVO">
+		select * from amealtbl
+	</select>
+	
+	<update id="updatesetting">
+		update amealtbl set breakfast=#{breakfast},
+		lunch=#{lunch}, dinner=#{dinner}, 
+		starttime=to_date(#{starttime}),
+		endtime=to_date(#{endtime}),
+		applydate=#{applydate}
+	</update>
+
+</mapper>

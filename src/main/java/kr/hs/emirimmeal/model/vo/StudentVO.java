@@ -5,6 +5,7 @@ public class StudentVO {
 	private String name;
 	private String passcode;
 	private String isdorm;
+	private String etc;
 	
 	public int getNo() {
 		return no;
@@ -31,8 +32,15 @@ public class StudentVO {
 		this.isdorm = isdorm;
 	}
 	
+	public String getEtc() {
+		return etc;
+	}
+	public void setEtc(String etc) {
+		this.etc = etc;
+	}
 	@Override
 	public String toString() {
-		return "StudentVO [no=" + no + ", name=" + name + ", passcode=" + passcode + ", isdorm=" + isdorm + "]";
+		return "StudentVO [no=" + no + ", name=" + name + ", passcode=" + passcode + ", isdorm=" + isdorm + ", etc="
+				+ etc + "]";
 	}
 }

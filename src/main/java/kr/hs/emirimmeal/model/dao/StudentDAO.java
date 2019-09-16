@@ -8,4 +8,6 @@ public interface StudentDAO {
 	public List<StudentVO> studentList();
 	public boolean loginCheck(StudentVO vo);
 	public StudentVO viewStudent(StudentVO vo);
+	public StudentVO modifyStudent(int no);
+	public void updateStudent(StudentVO vo);
 }

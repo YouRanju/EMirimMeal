@@ -10,4 +10,6 @@ public interface StudentService {
 	public List<StudentVO> studentList();
 	public boolean loginCheck(StudentVO vo, HttpSession session);
 	public StudentVO viewStudent(StudentVO vo);
+	public StudentVO modifyStudent(int no);
+	public void updateStudent(StudentVO vo);
 }

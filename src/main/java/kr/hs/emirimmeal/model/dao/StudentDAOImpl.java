@@ -30,4 +30,14 @@ public class StudentDAOImpl implements StudentDAO {
 	public StudentVO viewStudent(StudentVO vo) {
 		return sqlsession.selectOne("student.viewStudent", vo);
 	}
+
+	@Override
+	public StudentVO modifyStudent(int no) {
+		return sqlsession.selectOne("student.modifystudent", no);
+	}
+
+	@Override
+	public void updateStudent(StudentVO vo) {
+		sqlsession.update("student.updatestudent", vo);
+	}
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="studentMeal">
+	<select id="state" resultType="kr.hs.emirimmeal.model.vo.StudentMealStateVO">
+		select * from smealtbl where no=#{no}
+	</select>
+	
+	<select id="statetoint" resultType="kr.hs.emirimmeal.model.vo.StudentMealStateVO">
+		select * from smealtbl where no=#{no}
+	</select>
+	
+	<update id="updatestate">
+		update smealtbl set checkmeal=#{checkmeal}
+		where no=#{no}
+	</update>
+	
+	<select id="checkSaved" resultType="String">
+		select issave from smealtbl where no=#{no}
+	</select>
+	
+	<update id="updateSaved">
+		update smealtbl set issave='y' where no=#{no}
+	</update>
+</mapper>

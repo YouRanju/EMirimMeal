@@ -38,4 +38,13 @@ public class StudentServiceImpl implements StudentService {
 		return studentdao.viewStudent(vo);
 	}
 
+	@Override
+	public StudentVO modifyStudent(int no) {
+		return studentdao.modifyStudent(no);
+	}
+
+	@Override
+	public void updateStudent(StudentVO vo) {
+		studentdao.updateStudent(vo);
+	}
 }

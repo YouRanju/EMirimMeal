@@ -16,4 +16,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select * from studenttbl
 		where no=#{no} and name=#{name} and passcode=#{passcode}
 	</select>
+	
+	<select id="modifystudent" resultType="kr.hs.emirimmeal.model.vo.StudentVO">
+		select * from studenttbl where no=#{no}
+	</select>
+	
+	<update id="updatestudent">
+		update studenttbl set name=#{name}, isdorm=#{isdorm},
+		passcode=#{passcode}, etc=#{etc}
+		where no=#{no}
+	</update>
 </mapper>
