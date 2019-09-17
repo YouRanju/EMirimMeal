@@ -1,11 +1,15 @@
 package kr.hs.emirimmeal.model.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.hs.emirimmeal.model.vo.StudentMealStateVO;
+import kr.hs.emirimmeal.model.vo.StudentMealStateVO2;
+import kr.hs.emirimmeal.model.vo.StudentMealStateVO3;
 import kr.hs.emirimmeal.model.vo.StudentVO;
 
 @Repository
@@ -36,10 +40,18 @@ public class StudentMealStateDAOImpl implements StudentMealStateDAO {
 	}
 
 	@Override
-	public void updateSaved(int no) {
-		sqlsession.update("studentMeal.updateSaved", no);
+	public void updateSaved(StudentMealStateVO vo) {
+		sqlsession.update("studentMeal.updateSaved", vo);
+	}
+
+	@Override
+	public List<StudentMealStateVO2> checkDailyStudent() {
+		return sqlsession.selectList("studentMeal.daily");
 	}
 	
-	
+	@Override
+	public List<StudentMealStateVO3> checkDailyCnt() {
+		return sqlsession.selectList("studentMeal.cnt");
+	}
 
 }

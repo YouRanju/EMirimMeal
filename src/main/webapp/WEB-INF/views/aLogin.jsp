@@ -18,5 +18,12 @@
 		</fieldset>
 	</form>
 	<a href="${path}/emirimmeal/index">돌아가기</a>
+	
+	<c:if test="${msg=='성공'}">
+		<div>성공</div>
+	</c:if>
+	<c:if test="${msg=='실패'}">
+		<div>아이디와 비밀번호가 일치하지 않습니다.</div>
+	</c:if>
 </body>
 </html>

@@ -60,7 +60,7 @@ public class StudentController {
 
 		session.setAttribute("isLoginS", "true");
 		session.setAttribute("applydate", setting.getApplydate());
-		
+		System.out.println(state);
 		ModelAndView mav = new ModelAndView();
 		
 		if(result) {
@@ -79,10 +79,11 @@ public class StudentController {
 	@RequestMapping("/studentMealApply")
 	public String studentMealApply(Model m, HttpSession session) {
 		StudentMealStateVO state = stateService.viewState(Integer.parseInt(session.getAttribute("no").toString()));
+		StudentVO student = studentService.modifyStudent(Integer.parseInt(session.getAttribute("no").toString()));
+		
 		m.addAttribute("state", state);
-		
-		System.out.println(state);
-		
+		m.addAttribute("student", student);
+
 		return "studentMealapply";
 	}
 	
@@ -97,9 +98,9 @@ public class StudentController {
 	}
 	
 	@RequestMapping("/save")
-	public String saveState(HttpSession session) {
-		stateService.updateSaved(Integer.parseInt(session.getAttribute("no").toString()));
-		
+	public String saveState(@ModelAttribute StudentMealStateVO vo, HttpSession session) {
+		stateService.updateSaved(vo);
+
 		return "redirect:/studentMeal";
 	}
 }

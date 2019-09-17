@@ -17,9 +17,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.hs.emirimmeal.model.vo.AdminVO;
 import kr.hs.emirimmeal.model.vo.MealSettingVO;
+import kr.hs.emirimmeal.model.vo.StudentMealStateVO;
+import kr.hs.emirimmeal.model.vo.StudentMealStateVO2;
+import kr.hs.emirimmeal.model.vo.StudentMealStateVO3;
 import kr.hs.emirimmeal.model.vo.StudentVO;
 import kr.hs.emirimmeal.service.AdminService;
 import kr.hs.emirimmeal.service.MealSettingService;
+import kr.hs.emirimmeal.service.StudentMealStateService;
 import kr.hs.emirimmeal.service.StudentService;
 
 @Controller
@@ -32,6 +36,9 @@ public class AdminController {
 	
 	@Inject
 	MealSettingService mealSettingService;
+	
+	@Inject
+	StudentMealStateService stateService;
 	
 	@RequestMapping("/adminLogin")
 	public String aLogin(HttpSession session) {
@@ -119,7 +126,13 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/checkDailyStudent")
-	public String checkDailyStudent() {
+	public String checkDailyStudent(Model m) {
+		List<StudentMealStateVO2> list = stateService.checkDailyStudent();
+		List<StudentMealStateVO3> cnt = stateService.checkDailyCnt();
+		
+		m.addAttribute("list", list);
+		m.addAttribute("cnt", cnt);
+		
 		return "checkDailyStudent";
 	}
 }

@@ -22,6 +22,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="updateSaved">
-		update smealtbl set issave='y' where no=#{no}
+		update smealtbl set issave=#{issave}, total=#{total} where no=#{no}
 	</update>
+	
+	<select id="daily" resultType="kr.hs.emirimmeal.model.vo.StudentMealStateVO2">
+		select * from dailystudent
+	</select>
+	
+	<select id="cnt" resultType="kr.hs.emirimmeal.model.vo.StudentMealStateVO3">
+		select * from cnt_view
+	</select>
 </mapper>

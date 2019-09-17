@@ -6,6 +6,7 @@ public class StudentMealStateVO {
 	private String issave;
 	private String checkmeal;
 	private int total;
+	private String applymeal;
 	
 	public int getNo() {
 		return no;
@@ -38,10 +39,18 @@ public class StudentMealStateVO {
 	public void setTotal(int total) {
 		this.total = total;
 	}
+	
+	
+	public String getApplymeal() {
+		return applymeal;
+	}
+	public void setApplymeal(String applymeal) {
+		this.applymeal = applymeal;
+	}
 	@Override
 	public String toString() {
 		return "StudentMealStateVO [no=" + no + ", name=" + name + ", issave=" + issave + ", checkmeal=" + checkmeal
-				+ ", total=" + total + "]";
+				+ ", total=" + total + ", applymeal=" + applymeal + "]";
 	}
 	
 

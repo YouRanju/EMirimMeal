@@ -44,7 +44,7 @@
 				<td >
 					<input type="checkbox" name="fri" class="fri" value="breakfast">조식<br>
 					<input type="checkbox" name="fri" class="fri" value="lunch">중식<br>
-					<input type="checkbox" name="fri" class="fri" value="dinner">석식<br>
+					<input type="checkbox" name="fri" class="fri" value="dinner" disabled>석식<br>
 				</td>
 			</tr>
 		</table>
@@ -54,6 +54,7 @@
 </body>
 <script>
 	var checkMeal = '${state.checkmeal}';
+	var isDorm = '${student.isdorm}';
 	var daycheckmeal=[String(checkMeal.substr(0,3)),
 		String(checkMeal.substr(3,3)),String(checkMeal.substr(6,3)),
 		String(checkMeal.substr(9,3)),String(checkMeal.substr(12,3))];
@@ -69,8 +70,7 @@
 		[true, true, true]
 	];
 	var cnt = [];
-	var cntf = 0;
-	
+
 	for(var i = 0; i < 5; i++) {
 		for(var j = 0; j < 8; j++) {
 			if(daycheckmeal[i] == enumnumber[j]) {
@@ -80,7 +80,24 @@
 		}
 	}
 	
-
+	 if(isDorm != 'Y') {
+		document.getElementsByClassName("mon")[0].disabled = true;
+		document.getElementsByClassName("tue")[0].disabled = true;
+		document.getElementsByClassName("wed")[0].disabled = true;
+		document.getElementsByClassName("thu")[0].disabled = true;
+		document.getElementsByClassName("fri")[0].disabled = true;
+	} 
+	 
+	 if(checkMeal == '000000000000000') {
+		 for(var i = 0; i < 3; i++) {
+			 document.getElementsByClassName("mon")[i].disabled = true;
+				document.getElementsByClassName("tue")[i].disabled = true;
+				document.getElementsByClassName("wed")[i].disabled = true;
+				document.getElementsByClassName("thu")[i].disabled = true;
+				document.getElementsByClassName("fri")[i].disabled = true;
+		}
+	 }
+	 
 	for(var i = 0; i < 3; i++) {
 		document.getElementsByClassName("mon")[i].checked=enumcheck[cnt[0]][i]; 
 	}
