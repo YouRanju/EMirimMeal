@@ -170,7 +170,7 @@
 	if(lprice < 0) lprice = 0;
 	if(dprice < 0) dprice = 0;
 	
-	document.getElementById("checkPrice").innerHTML = "조식: " + dprice.toString().replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,') + "원 <br>"
+	document.getElementById("checkPrice").innerHTML = "조식: " + bprice.toString().replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,') + "원 <br>"
 												+"중식: " + lprice.toString().replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,') + "원 <br>"
 												+"석식: " + dprice.toString().replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,') + "원 <br>"
 												+"총합: " + (bprice + lprice + dprice).toString().replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,') + "원";
