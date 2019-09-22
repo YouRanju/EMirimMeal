@@ -6,35 +6,44 @@
 <head>
 <meta charset="UTF-8">
 <%@ include file="include/header.jsp"%>
-<title>Insert title here</title>
+<link rel="stylesheet" href="../resources/calendar.css">
+<link rel="stylesheet" href="../resources/studentmeal.css">
+<title>${state.name}님의 ${setting.applydate}월 급식 현황</title>
 
 </head>
 <body>
-	
+	<div class="container">
 		<header>
-			<h2> 
-				급식신청기간 <br>
-				${setting.starttime}부터 ~ ${setting.endtime}까지
-			</h2>		
+			<h2> 급식신청기간</h2>
+			<h3>${setting.starttime}부터 ~ ${setting.endtime}까지</h3>			
 		</header>
+		<hr>
 		<leftmenu>
-			<div id="loginInfo"></div>
-			<a href="${path}/emirimmeal/index">로그아웃</a>
+			<div id="loginInfo">
+				${state.name}님이 로그인 중입니다.
+			</div>
+			<a href="${path}/emirimmeal/index" class="logoutbtn">로그아웃</a>
 			<c:if test="${state.issave!='y'}">
-				<a href="${path}/emirimmeal/studentMealApply"><button>급식신청하기</button></a>
+				<a href="${path}/emirimmeal/studentMealApply" id="apply">
+					<button class= "btn btn-success">
+						<img src="../resources/check.png" width="15px">&nbsp&nbsp급식신청하기
+					</button>
+				</a>
 			</c:if>
 		</leftmenu>
 		<main>
-			<h1>${state.name}님의
-			${setting.applydate}월 급식 신청 현황</h1>
-			<table border=1 width="700">
-				<tr>
-					<th>월</th>
-					<th>화</th>
-					<th>수</th>
-					<th>목</th>
-					<th>금</th>
-				</tr>
+			<h1><center>${state.name}님의 ${setting.applydate}월 급식 신청 현황</center></h1>
+			<table class="table table-bordered">
+				<thead>
+					<tr class="row">
+						<th class="calendar-day">월</th>
+						<th class="calendar-day">화</th>
+						<th class="calendar-day">수</th>
+						<th class="calendar-day">목</th>
+						<th class="calendar-day">금</th>
+					</tr>
+				</thead>
+				<tbody>
 				<%
 					Calendar cal = Calendar.getInstance();
 				    cal.set(Calendar.MONTH, Integer.parseInt(session.getAttribute("applydate").toString())-1);
@@ -70,16 +79,17 @@
 			        		  continue;
 			        	  }
 			        	  %>
-			        	  <tr>
-			        	  	<td class="mon" height="32px"><%=daytoString[i][1] %></td>
-			        	  	<td class="tue" height="32px"><%=daytoString[i][2] %></td>
-			        	  	<td class="wed" height="32px"><%=daytoString[i][3] %></td>
-			        	  	<td class="thu" height="32px"><%=daytoString[i][4] %></td>
-			        	  	<td class="fri" height="32px"><%=daytoString[i][5] %></td>
+			        	  <tr class="row">
+			        	  	<td class="mon calendar-day"><%=daytoString[i][1] %></td>
+			        	  	<td class="tue calendar-day"><%=daytoString[i][2] %></td>
+			        	  	<td class="wed calendar-day"><%=daytoString[i][3] %></td>
+			        	  	<td class="thu calendar-day"><%=daytoString[i][4] %></td>
+			        	  	<td class="fri calendar-day"><%=daytoString[i][5] %></td>
 			        	  <tr>
 			        	  <%
 			          }
 			    %>
+			    </tbody>
 			</table>
 		</main>
 		<rightmenu>
@@ -91,11 +101,13 @@
 					<input type="hidden" name="checkmeal" value="${state.checkmeal}">
 					<input type="hidden" name="total" id="total">
 					<c:if test="${state.issave!='y'}">
-						<input type="submit" value="최종마감하기">
+						<input type="submit" class="btn btn-warning" value="최종마감하기">
 					</c:if>
 				</form>
 			
 		</rightmenu>
+		<img src="../resources/mirim.png">
+	</div>	
 </body>
 <script>
 	function emptyday(name, index) {
@@ -199,15 +211,15 @@
 	
 	for(var i = 0; i < maxweek; i++) {
 		if(mon[i].innerHTML != '') 
-			mon[i].innerHTML += "\t\t " + enumcheck[cnt[0]];
+			mon[i].innerHTML += "<br><meal>" + enumcheck[cnt[0]] + "</meal>";
 		if(tue[i].innerHTML != '')
-			tue[i].innerHTML += "\t\t " + enumcheck[cnt[1]];
+			tue[i].innerHTML += "<br><meal>" + enumcheck[cnt[1]] +"</meal>";
 		if(wed[i].innerHTML != '')
-			wed[i].innerHTML += "\t\t " + enumcheck[cnt[2]];
+			wed[i].innerHTML += "<br><meal>" + enumcheck[cnt[2]] +"</meal>";
 		if(thu[i].innerHTML != '')
-			thu[i].innerHTML += "\t\t " + enumcheck[cnt[3]];
+			thu[i].innerHTML += "<br><meal>" + enumcheck[cnt[3]] +"</meal>";
 		if(fri[i].innerHTML != '')
-			fri[i].innerHTML += "\t\t " + enumcheck[cnt[4]];
+			fri[i].innerHTML += "<br><meal>" + enumcheck[cnt[4]] +"</meal>";
 	}
 	
 </script>

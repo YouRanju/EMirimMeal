@@ -1,0 +1,78 @@
+container {
+	width:100%;
+	height:100%;
+}
+header {
+	text-align: center;
+	color: orangered;
+	padding-top: 20px;
+	width: 100%;
+	height:18%;
+}
+h1 {
+	margin: 0px;
+	padding: 0;
+	line-height:36px;
+}
+leftmenu {
+	float:left;
+	width: 20%;
+	height:100%;
+	padding-top: 100px;
+	padding-right: 45px;
+}
+main {
+	float:left;
+	width: 60%;
+	
+}
+main:after {
+	content: "";
+	display: block;
+	position: absolute;
+	top:18%;
+	left:0;
+	width:100%;
+	height:82%;
+	z-index:-1;
+	  background-image: url("lunch.jpg");
+	  opacity: 0.1;
+}
+rightmenu {
+	float: left;
+	width: 20%;
+	padding-top: 100px;
+	padding-left: 45px;
+	text-align: right;
+	font-size: 20px;
+	line-height: 40px;
+}
+rightmenu > #checkPrice > * {
+	width:100%;
+	text-align: justify;
+}
+button {
+	display:block;
+	margin-top: 30px;
+}
+.logoutbtn {
+	display:block;
+	text-align: right;
+}
+
+.container > img {
+	bottom:0;
+	right:0;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	position: fixed;
+	width: 150px;
+}
+.btn-success {
+	margin-top: 100px;
+	width: 100%;
+}
+.btn-warning {
+	margin-top: 200px;
+	width: 100%;
+}

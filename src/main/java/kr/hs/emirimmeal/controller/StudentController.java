@@ -1,5 +1,8 @@
 package kr.hs.emirimmeal.controller;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -36,7 +39,7 @@ public class StudentController {
 		return "index";
 	}
 
-	@RequestMapping("/studentMeal")
+	@RequestMapping(value = "/studentMeal", method= RequestMethod.GET)
 	public String notLogin(Model m, HttpSession session) {
 		if(session.getAttribute("isLoginS") != "true") {
 			return "redirect:/index";
@@ -60,7 +63,14 @@ public class StudentController {
 
 		session.setAttribute("isLoginS", "true");
 		session.setAttribute("applydate", setting.getApplydate());
-		System.out.println(state);
+		
+		Date d = new Date();
+
+		if(setting.getStarttime().compareTo(d) > 0
+			|| setting.getEndtime().compareTo(d) < 0) {
+			state.setIssave("y");
+		}
+		
 		ModelAndView mav = new ModelAndView();
 		
 		if(result) {

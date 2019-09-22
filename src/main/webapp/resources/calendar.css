@@ -1,0 +1,27 @@
+	table {
+		margin-top: 20px;
+		background-color: white;
+	}
+	
+	th {
+		text-align: center;
+		font-size: 20px;
+	}
+
+	td {
+		width: 20%;
+		height: 80px;
+		font-size: 16px;
+	}
+	
+	.calendar-day {
+		position: relative;
+	}
+	
+	.calendar-day > meal {
+		position: absolute;
+		bottom: 5px;
+		right: 10px;
+		font-size: 14px;
+	}
+	
